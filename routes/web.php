@@ -26,3 +26,10 @@ Route::get('/alumnos/create', [AlumnosController::class, 'create'])
 //Store - Almacenar un nuevo registro
 Route::post('/alumnos', [AlumnosController::class, 'store'])
 ->name('alumnos.store');
+//Edit - Formulario de Edicion
+//localhost:8000/alumnos/5/edit
+Route::get('/alumnos/{id}/edit', [AlumnosController::class, 'edit'])
+->name('alumnos.edit');
+//Creamos la opcion PUT
+Route::put('/alumnos/{id}', [AlumnosController::class, 'update'])
+->name(('alumnos.update'));

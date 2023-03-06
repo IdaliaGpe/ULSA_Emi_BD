@@ -22,7 +22,10 @@
             @foreach($alumnos as $alumno)
             <tr>
                 <td>{{$alumno->nombre}}</td>
-                <td><button>Editar</button><button>Eliminar</button></td>
+                <td>
+                    <a href="{{route('alumnos.edit', $alumno->id)}}">Editar</a>
+                    <button>Eliminar</button>
+                </td>
             </tr>
             @endforeach
         </tbody>
