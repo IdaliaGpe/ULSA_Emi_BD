@@ -33,3 +33,9 @@ Route::get('/alumnos/{id}/edit', [AlumnosController::class, 'edit'])
 //Creamos la opcion PUT
 Route::put('/alumnos/{id}', [AlumnosController::class, 'update'])
 ->name(('alumnos.update'));
+//Creamos el Delete
+Route::get('/alumnos/{id}/delete', [AlumnosController::class, 'delete'])
+->name('alumnos.delete');
+//Destruit alumno
+Route::delete('/alumnos/{id}', [AlumnosController::class, 'destroy'])
+->name('alumnos.destroy');

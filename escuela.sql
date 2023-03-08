@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 27-02-2023 a las 20:36:14
+-- Tiempo de generación: 08-03-2023 a las 21:15:06
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 7.4.33
 
@@ -31,8 +31,41 @@ CREATE TABLE `Alumnos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `id_carrera` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `Alumnos`
+--
+
+INSERT INTO `Alumnos` (`id`, `nombre`, `created_at`, `updated_at`, `id_carrera`) VALUES
+(1, 'Idalia Padilla', '2023-03-08 21:08:04', '2023-03-09 03:13:16', 1),
+(3, 'Daney Arvayo', '2023-03-08 21:09:32', '2023-03-09 03:13:48', 3),
+(7, 'Max Rivera', '2023-03-08 21:09:32', '2023-03-09 03:56:56', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carreras`
+--
+
+CREATE TABLE `carreras` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(128) NOT NULL,
+  `created_id` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_id` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `carreras`
+--
+
+INSERT INTO `carreras` (`id`, `nombre`, `created_id`, `updated_id`) VALUES
+(1, 'Lic. en Administracion', '2023-03-08 21:06:00', NULL),
+(2, 'Lic. en Derecho', '2023-03-08 21:06:00', NULL),
+(3, 'Lic. en Enfermeria', '2023-03-08 21:06:00', NULL),
+(4, 'Lic. en Arquitectura', '2023-03-08 21:06:00', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -42,6 +75,13 @@ CREATE TABLE `Alumnos` (
 -- Indices de la tabla `Alumnos`
 --
 ALTER TABLE `Alumnos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_carrera` (`id_carrera`);
+
+--
+-- Indices de la tabla `carreras`
+--
+ALTER TABLE `carreras`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -52,7 +92,23 @@ ALTER TABLE `Alumnos`
 -- AUTO_INCREMENT de la tabla `Alumnos`
 --
 ALTER TABLE `Alumnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `carreras`
+--
+ALTER TABLE `carreras`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `Alumnos`
+--
+ALTER TABLE `Alumnos`
+  ADD CONSTRAINT `alumnos_ibfk_1` FOREIGN KEY (`id_carrera`) REFERENCES `carreras` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

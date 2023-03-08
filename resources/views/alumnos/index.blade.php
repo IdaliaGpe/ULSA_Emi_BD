@@ -8,6 +8,9 @@
 </head>
 <body>
     <h1>Lista de Alumnos</h1>
+    @if(Session::has('exito'))
+        <p>{{Session::get('exito')}}</p>
+    @endif
     <a href="{{route('alumnos.create')}}">Crear Alumno</a>
     <br>
     <br>
@@ -24,7 +27,7 @@
                 <td>{{$alumno->nombre}}</td>
                 <td>
                     <a href="{{route('alumnos.edit', $alumno->id)}}">Editar</a>
-                    <button>Eliminar</button>
+                    <a href="{{route('alumnos.delete', $alumno->id)}}">Eliminar</a>
                 </td>
             </tr>
             @endforeach
